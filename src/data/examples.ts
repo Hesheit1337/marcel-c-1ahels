@@ -1,0 +1,337 @@
+export interface CodeExample {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  tip: string;
+  code: string;
+}
+
+export const codeExamples: CodeExample[] = [
+  {
+    id: "wechselboerse",
+    title: "Wechselbörse",
+    icon: "💱",
+    description: "Euro ↔ Dollar Umrechnung.",
+    tip: "Behalte die Originalformeln bei.",
+    code: `#include <stdio.h>
+
+int main() {
+    char eingabe;
+    int euro;
+    int dollar;
+    printf("Drücken sie 1 wen sie Euro in Dollar umrechnen wollen\\n drücken sie 2 wenn sie Us Dollar in Euro umrechnen wollen: ");
+    scanf("%c",&eingabe);
+    if(eingabe == '1'){
+        float a;
+        printf("Geben sie den Betrag in Euro ein: ");
+        scanf("%f",&a);
+        float rechnung1= a*1.18;
+        printf("%0.2f Euro sind %0.2f US-Dollar",a,rechnung1);
+    }else if(eingabe == '2'){
+        float b;
+        printf("Geben sie den Betrag in US-Dollar ein: ");
+        scanf("%f",&b);
+        float rechnung2= b *0.85;
+        printf("%0.2f US-Dollar sind %0.2f in Euro",b,rechnung2);
+    }
+}`
+  },
+  {
+    id: "kinokarten",
+    title: "Kinokarten",
+    icon: "🎬",
+    description: "Ticketpreis nach Alter.",
+    tip: "Altersbedingungen unverändert.",
+    code: `#include <stdio.h>
+
+int main() {
+    int eingabe;
+    int preis;
+    printf("Geben sie den Ticketpreis ein: ");
+    scanf("%d",&preis);
+    printf("Geben sie ihr Alter ein: ");
+    scanf("%d",&eingabe);
+    if(eingabe<5){
+        printf("Der eintritt ist frei");
+    }
+    if(eingabe>=5 && eingabe<=12){
+        int finalpreis= preis/2;
+        printf("Der preis ist: %d",finalpreis);
+    }
+    if(eingabe>=13 && eingabe<=59){
+        int finalpreis2=preis;
+        printf("Der preis ist: %d",finalpreis2);
+    }
+    if(eingabe>=60){
+        printf("Der Eintritt ist Frei");
+    }
+}`
+  },
+  {
+    id: "noten",
+    title: "Noten Punkte",
+    icon: "📚",
+    description: "Ermittelt Note basierend auf Punkten.",
+    tip: "Punkte-Logik unverändert.",
+    code: `#include <stdio.h>
+
+int main() {
+    int punkt1;
+    int punkt2;
+    printf("Geben sie die Punkte im 1. Beispiel ein: ");
+    scanf("%d",&punkt1);
+    printf("Geben sie die Punkte im 2. Beispiel ein: ");
+    scanf("%d",&punkt2);
+    int add= punkt1+punkt2;
+    if(add<=50){
+        printf("Note: 5");
+    }
+    if(add>=51 && add<=69){
+        printf("Note: 4");
+    }
+    if(add>=70 && add<=79){
+        printf("Note: 3");
+    }
+    if(add>=80 && add<=89){
+        printf("Note: 2");
+    }
+    if(add>=90 && add<=100){
+        printf("Note: 1");
+    }
+}`
+  },
+  {
+    id: "monatstage",
+    title: "Monatstage",
+    icon: "📅",
+    description: "Gibt die Tage eines Monats aus.",
+    tip: "Switch-Case für jeden Monat beibehalten.",
+    code: `#include <stdio.h>
+
+int main() {
+    int monat;
+    printf("Geben sie den Monat ein: ");
+    scanf("%d",&monat);
+    switch(monat){
+        case 1: printf("Der Monat hat 31 Tage "); break;
+        case 2: printf("Der Monat hat 28 Tage "); break;
+        case 3: printf("Der Monat hat 31 Tage "); break;
+        case 4: printf("Der Monat hat 30 Tage "); break;
+        case 5: printf("Der Monat hat 31 Tage "); break;
+        case 6: printf("Der Monat hat 30 Tage"); break;
+        case 7: printf("Der Monat hat 31 Tage "); break;
+        case 8: printf("Der Monat hat 31 Tage "); break;
+        case 9: printf("Der Monat hat 30 Tage "); break;
+        case 10: printf("Der Monat hat 31 Tage "); break;
+        case 11: printf("Der Monat hat 30 Tage "); break;
+        case 12: printf("Der Monat hat 31 Tage "); break;
+    }
+}`
+  },
+  {
+    id: "schaltjahr",
+    title: "Schaltjahr",
+    icon: "🗓️",
+    description: "Überprüft, ob ein Jahr ein Schaltjahr ist und gibt Tage des Monats aus.",
+    tip: "Schaltjahr-Formel unverändert lassen.",
+    code: `#include <stdio.h>
+
+int main() {
+    int monat;
+    int jahr;
+    printf("Geben Sie den Monat ein: ");
+    scanf("%d", &monat);
+    printf("Geben Sie das Jahr ein: ");
+    scanf("%d", &jahr);
+
+    int schaltjahr = (jahr % 4 == 0 && (jahr % 100 != 0 || jahr % 400 == 0));
+    if(schaltjahr){ printf("Es ist ein Schaltjahr\\n"); }
+
+    switch (monat) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12: printf("Der Monat hat 31 Tage.\\n"); break;
+        case 4: case 6: case 9: case 11: printf("Der Monat hat 30 Tage.\\n"); break;
+        case 2: if (schaltjahr) { printf("Der Monat hat 29 Tage.\\n"); } else { printf("Der Monat hat 28 Tage.\\n"); } break;
+    }
+    return 0;
+}`
+  },
+  {
+    id: "ssp",
+    title: "Stein/Schere/Papier",
+    icon: "✊",
+    description: "Spiel gegen den Computer.",
+    tip: "Zufallszahl modulo 3 für Auswahl.",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int zufallszahl;
+    int eingabe;
+    printf("Geben sie 0 für Stein ein\\n Geben sie 1 für Schere ein\\n Geben sie 2 für Papier ein\\n");
+    scanf("%d",&eingabe);
+    srand(time(NULL));
+    zufallszahl = rand() % 3;
+    if(zufallszahl == eingabe){ printf("Es ist ein Unentschieden\\n"); }    
+    else if((zufallszahl == 0 && eingabe == 1)||(zufallszahl == 1 && eingabe == 2)||(zufallszahl == 2 && eingabe == 0)){
+        printf("Der Computer hat gewonnen\\n");
+    } else { printf("Du hast Gewonnen \\n"); }
+
+    switch(zufallszahl){
+        case 0: printf("Der Computer hat Stein gewählt "); break;
+        case 1: printf("Der Computer hat Schere gewählt: "); break;
+        case 2: printf("Der Computer hat Papier gewählt: "); break;
+    }
+}`
+  },
+  {
+    id: "zufallsadd",
+    title: "Zufalls-Addition",
+    icon: "🎲",
+    description: "Einfaches Additionsspiel mit Zufallszahlen.",
+    tip: "Prüfe Ergebnis genau.",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int eingabe;
+    int zufall1;
+    int zufall2;
+    srand(time(NULL));
+    zufall1= rand() % 10;
+    zufall2= rand() % 10;
+    printf("Die Rechnung lautet: %d + %d = ? \\n",zufall1,zufall2);
+    printf("Geben sie Die Lösung ein \\n");
+    scanf("%d",&eingabe);
+    if(zufall1+zufall2==eingabe){ printf("Die eingegebene Lösung ist Richtig"); }
+    else{ printf("Die Lösung ist Leider Falsch "); }
+}`
+  },
+  {
+    id: "zufallsrech",
+    title: "Zufalls-Rechnen",
+    icon: "➕",
+    description: "Zufällige Rechenaufgaben mit Operatoren.",
+    tip: "Originallogik für Operatoren beibehalten.",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+   char eingabe;
+   int lösung;
+   int input;
+   int zufall1;
+   int zufall2;
+   printf("Geben sie + , - , / , * \\n");
+   scanf(" %c", &eingabe);
+   srand(time(NULL));
+   zufall1=rand() % 10;
+   zufall2= rand() % 10;
+   printf("Die Rechnung ist %d %c %d = ",zufall1,eingabe,zufall2);
+   printf("Geben sie ihre Lösung ein ");
+   scanf("%d",&input);
+
+   if(eingabe == '+'){ lösung=zufall1+zufall2; if(input==lösung){ printf("Deine Lösung ist richtig "); } else { printf("Deine Lösung ist Falsch"); } }
+   if(eingabe == '/'){ lösung=zufall1/zufall2; if(input==lösung){ printf("Deine Lösung ist richtig "); } else{ printf("Deine Lösung ist falsch "); } }
+   if(eingabe == '*'){ lösung=zufall1*zufall2; if(input==lösung){ printf("Deine Lösung ist richtig "); } else{ printf("Deine Lösung ist falsch"); } }
+   if(eingabe == '-'){ lösung=zufall1-zufall2; if(input==lösung){ printf("Deine Lösung ist richtig "); } else{ printf("Deine Lösung ist Falsch"); } }
+}`
+  },
+  {
+    id: "hochzaehlen",
+    title: "Hochzählen",
+    icon: "⬆️",
+    description: "Zählt von 1 bis zur Obergrenze.",
+    tip: "for-Schleife mit Obergrenze.",
+    code: `#include <stdio.h>
+
+int main() {
+    int grenze;
+    int i=1;
+    printf("Geben sie die Obergrenze an: ");
+    scanf("%d",&grenze);
+    for(int i=1;i<=grenze;i++){
+        printf(" %d \\n",i);
+    }
+    return 0;
+}`
+  },
+  {
+    id: "runterzaehlen",
+    title: "Runterzählen",
+    icon: "⬇️",
+    description: "Zählt von groß nach klein.",
+    tip: "for-Schleife richtig initialisieren.",
+    code: `#include <stdio.h>
+
+int main() {
+    int gross;
+    int klein;
+    printf("Geben sie den größten Wert ein: \\n");
+    scanf("%d",&gross);
+    printf("Geben sie den kleinsten Wert ein: \\n");
+    scanf("%d",&klein);
+    for(gross>=klein;gross--;){
+        printf(" %d \\n",gross);
+    }
+}`
+  },
+  {
+    id: "array",
+    title: "Array Ausgabe",
+    icon: "📦",
+    description: "Gibt alle Array-Werte aus.",
+    tip: "Index von 0 bis size-1 durchlaufen.",
+    code: `#include <stdio.h>
+
+int main() {
+    int arr[10]={1,1,2,4,7,11,16,22,29,37};
+    int size=10;
+    for(int i=0;i<size;i++){
+        printf(" %d \\n",arr[i]);
+    }
+}`
+  },
+  {
+    id: "durchschnitt",
+    title: "Durchschnitt berechnen",
+    icon: "📊",
+    description: "Berechnet Durchschnitt aus drei Beispielen.",
+    tip: "Durchschnitt = Summe / 3.",
+    code: `#include <stdio.h>
+
+int main() {
+  int bei1, bei2, bei3;
+  printf("Geben sie die Punkte für das Erste Beispiel ein: \\n"); scanf("%d",&bei1);
+  printf("Geben sie die Punkte für das Zweite Beispiel ein: \\n"); scanf("%d",&bei2);
+  printf("Geben sie die Punkte für das Dritte Beispiel ein: \\n"); scanf("%d",&bei3);
+  int durch = bei1 + bei2 + bei3;
+  int ergebnis=durch / 3;
+  printf("Das ergebnis ist: %d",ergebnis);
+}`
+  },
+  {
+    id: "besterwert",
+    title: "Bester Wert",
+    icon: "🏆",
+    description: "Findet das beste Beispiel.",
+    tip: "Vergleichslogik unverändert.",
+    code: `#include <stdio.h>
+
+int main() {
+  int bei1, bei2, bei3;
+  printf("Geben sie die Punkte für das Erste Beispiel ein: \\n"); scanf("%d",&bei1);
+  printf("Geben sie die Punkte für das Zweite Beispiel ein: \\n"); scanf("%d",&bei2);
+  printf("Geben sie die Punkte für das Dritte Beispiel ein: \\n"); scanf("%d",&bei3);
+  int durch = bei1 + bei2 + bei3;
+  int ergebnis=durch / 3;
+  printf("Das ergebnis ist: %d\\n",ergebnis);
+  if(bei1>bei2 && bei1>bei3){ printf("Beispiel 1 ist das Beste mit %d",bei1); }
+  if(bei2>bei1 && bei2>bei3){ printf("Beispiel 2 ist das Beste mit %d",bei2); }
+  if(bei3>bei1 && bei3>bei2){ printf("Beispiel 3 ist das Beste mit %d",bei3); }
+}`
+  }
+];
