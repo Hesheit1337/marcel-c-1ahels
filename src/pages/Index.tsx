@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { ExampleCard } from "@/components/ExampleCard";
-import { CodeDisplay } from "@/components/CodeDisplay";
-import { codeExamples, CodeExample } from "@/data/examples";
-import { Code2, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Code2, BookOpen, Sparkles, ArrowRight } from "lucide-react";
 
 const Index = () => {
-  const [selectedExample, setSelectedExample] = useState<CodeExample | null>(null);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
       {/* Animated background elements */}
@@ -15,78 +12,95 @@ const Index = () => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
       </div>
 
-      <header className="relative bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-primary-foreground py-12 shadow-2xl overflow-hidden">
-        {/* Header decorative elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent" />
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex items-center justify-center gap-4 animate-slide-up">
-            <Code2 className="w-12 h-12 animate-float" />
-            <div className="text-center">
-              <h1 className="text-5xl md:text-6xl font-bold mb-2 drop-shadow-lg">
-                C-Programme Lernplattform
-              </h1>
-              <div className="flex items-center justify-center gap-2 text-primary-foreground/90">
-                <Sparkles className="w-5 h-5" />
-                <p className="text-lg md:text-xl">
-                  Lerne C-Programmierung mit praktischen Beispielen
-                </p>
-                <Sparkles className="w-5 h-5" />
-              </div>
-            </div>
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        {/* Hero Section */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <Code2 className="w-16 h-16 text-primary animate-float" />
+            <Sparkles className="w-12 h-12 text-accent animate-float" style={{ animationDelay: "0.5s" }} />
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            C-Programme Lernplattform
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+            Lerne C-Programmierung mit praktischen Beispielen und verständlichen Erklärungen
+          </p>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Sparkles className="w-4 h-4" />
+            <span>Perfekt für Anfänger und Fortgeschrittene</span>
           </div>
         </div>
-      </header>
 
-      <main className="container mx-auto px-4 py-16 relative z-10">
-        {!selectedExample ? (
-          <>
-            <div className="text-center mb-12 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Wähle ein Beispiel
+        {/* Main Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+          <Card 
+            className="group p-8 bg-gradient-to-br from-card to-card/80 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 shadow-xl hover:shadow-2xl hover:shadow-primary/20 relative overflow-hidden animate-slide-up cursor-pointer"
+            style={{ animationDelay: "0.1s" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">
+                💻
+              </div>
+              <h2 className="text-3xl font-bold mb-4 text-card-foreground group-hover:text-primary transition-colors">
+                Code-Beispiele
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Klicke auf eine Karte, um den vollständigen Code zu sehen
+              <p className="text-muted-foreground mb-6 text-lg">
+                Praktische C-Programme mit ausführlichen Kommentaren und Tipps. Von einfachen Berechnungen bis zu komplexen Algorithmen.
               </p>
+              <Link to="/examples">
+                <Button className="gap-2 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  Beispiele ansehen
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {codeExamples.map((example, index) => (
-                <ExampleCard
-                  key={example.id}
-                  icon={example.icon}
-                  title={example.title}
-                  onClick={() => setSelectedExample(example)}
-                  index={index}
-                />
-              ))}
-            </div>
-          </>
-        ) : (
-          <CodeDisplay
-            title={selectedExample.title}
-            icon={selectedExample.icon}
-            description={selectedExample.description}
-            tip={selectedExample.tip}
-            code={selectedExample.code}
-            onBack={() => setSelectedExample(null)}
-          />
-        )}
-      </main>
+          </Card>
 
-      <footer className="relative bg-gradient-to-r from-secondary/50 via-secondary/30 to-secondary/50 py-8 mt-20 backdrop-blur-sm">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground text-sm md:text-base mb-2">
-            ✨ Um neue Beispiele hinzuzufügen, bearbeite einfach die Datei
-          </p>
-          <code className="bg-code-bg px-4 py-2 rounded-lg text-sm font-mono shadow-md inline-block">
-            src/data/examples.ts
-          </code>
-          <p className="text-muted-foreground text-xs mt-4">
-            Alles aktualisiert sich automatisch! 🚀
-          </p>
+          <Card 
+            className="group p-8 bg-gradient-to-br from-card to-card/80 border-2 border-accent/20 hover:border-accent/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 shadow-xl hover:shadow-2xl hover:shadow-accent/20 relative overflow-hidden animate-slide-up cursor-pointer"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500">
+                📚
+              </div>
+              <h2 className="text-3xl font-bold mb-4 text-card-foreground group-hover:text-accent transition-colors">
+                Erklärungen
+              </h2>
+              <p className="text-muted-foreground mb-6 text-lg">
+                Verständliche Erklärungen zu wichtigen Konzepten der C-Programmierung. Schritt für Schritt zum Verständnis.
+              </p>
+              <Link to="/explanations">
+                <Button variant="secondary" className="gap-2 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  Erklärungen lesen
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </Card>
         </div>
-      </footer>
+
+        {/* Info Section */}
+        <Card className="max-w-3xl mx-auto p-8 bg-gradient-to-br from-secondary/30 to-secondary/10 border-2 border-border/50 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+          <h3 className="text-2xl font-bold mb-4 text-center">📝 Einfach erweiterbar</h3>
+          <div className="space-y-3 text-muted-foreground">
+            <p className="flex items-start gap-2">
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Neue Beispiele hinzufügen:</strong> Bearbeite <code className="bg-code-bg px-2 py-1 rounded text-sm">src/data/examples.ts</code></span>
+            </p>
+            <p className="flex items-start gap-2">
+              <span className="text-accent font-bold">•</span>
+              <span><strong>Neue Erklärungen hinzufügen:</strong> Bearbeite <code className="bg-code-bg px-2 py-1 rounded text-sm">src/data/explanations.ts</code></span>
+            </p>
+            <p className="flex items-start gap-2">
+              <span className="text-primary font-bold">•</span>
+              <span>Alle Änderungen werden automatisch übernommen – kein kompliziertes Setup nötig!</span>
+            </p>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };
