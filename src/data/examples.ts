@@ -355,5 +355,117 @@ int main() {
     return 0;
 }
 }`
+  },
+  {
+    id: "Flugzeugreservierung",
+    title: "Flugzeugreservierung",
+    icon: "✈️",
+    description: "Reservierungssystem für Flugzeugsitze.",
+    tip: "Behalte die gleiche Logik",
+    code: `#include <stdio.h>
+#include <stdbool.h>
+#include <ctype.h>
+
+#define SITZPLAETZE 10
+
+bool sitzplaetze[SITZPLAETZE] = {false}; // false = frei, true = reserviert
+
+void menue_anzeigen() {
+    printf("\\n========================================\\n");
+    printf("Reservierungssystem für Flugzeugsitzplätze\\n");
+    printf("========================================\\n");
+    printf("Business Class . . . . B\\n");
+    printf("Economy Class . . . . . E\\n");
+    printf("Schließen . . . . . . . . S\\n");
+    printf("----------------------------------------\\n");
+}
+
+int freien_sitzplatz_suchen(char klasse, char* klasse_name) {
+    int start, ende;
+    
+    if (klasse == 'B') {
+        start = 0;
+        ende = 4;
+        sprintf(klasse_name, "Business Class");
+    } else {
+        start = 5;
+        ende = 9;
+        sprintf(klasse_name, "Economy Class");
+    }
+    
+    for (int i = start; i <= ende; i++) {
+        if (!sitzplaetze[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void bordkarte_ausgeben(int sitzplatz, char* klasse) {
+    printf("\\n****************************************\\n");
+    printf("           BORDKARTE\\n");
+    printf("****************************************\\n");
+    printf(" Sitzplatz: %d\\n", sitzplatz + 1);
+    printf("     Klasse: %s\\n", klasse);
+    printf("****************************************\\n");
+}
+
+void sitzplatz_reservieren(int sitzplatz_nummer, char* klasse_name) {
+    sitzplaetze[sitzplatz_nummer] = true;
+    bordkarte_ausgeben(sitzplatz_nummer, klasse_name);
+}
+
+void status_anzeigen() {
+    printf("\\nAktueller Sitzplatzstatus:\\n");
+    for (int i = 0; i < SITZPLAETZE; i++) {
+        char* status = sitzplaetze[i] ? "reserviert" : "frei";
+        char* klasse = (i < 5) ? "Business" : "Economy";
+        printf("Sitzplatz %d (%s): %s\\n", i + 1, klasse, status);
+    }
+}
+
+int main() {
+    char wahl;
+    char klasse_name[20];
+    
+    printf("Willkommen beim Flugzeug-Reservierungssystem!\\n");
+    
+    while (1) {
+        menue_anzeigen();
+        printf("Bitte wählen Sie aus: ");
+        scanf(" %c", &wahl);
+        wahl = toupper(wahl);
+        
+        if (wahl == 'S') {
+            printf("\\nProgramm wird beendet. Auf Wiedersehen!\\n");
+            break;
+        }
+        else if (wahl == 'B') {
+            int sitzplatz = freien_sitzplatz_suchen('B', klasse_name);
+            if (sitzplatz != -1) {
+                sitzplatz_reservieren(sitzplatz, klasse_name);
+            } else {
+                printf("\\nKeine freien Sitzplätze in Business Class!\\n");
+            }
+        }
+        else if (wahl == 'E') {
+            int sitzplatz = freien_sitzplatz_suchen('E', klasse_name);
+            if (sitzplatz != -1) {
+                sitzplatz_reservieren(sitzplatz, klasse_name);
+            } else {
+                printf("\\nKeine freien Sitzplätze in Economy Class!\\n");
+            }
+        }
+        else {
+            printf("\\nUngültige Eingabe! Bitte wählen Sie B, E oder S.\\n");
+        }
+    }
+    
+    return 0;
+}`
+  }
+
+
+
   }
 ];
