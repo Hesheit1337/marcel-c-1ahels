@@ -23,11 +23,11 @@ const Index = () => {
             C-Programme Lernplattform
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-            Lerne C-Programmierung mit praktischen Beispielen und verständlichen Erklärungen
+            Lerne Beispiele und Erklärungen zu C
           </p>
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Sparkles className="w-4 h-4" />
-            <span>Perfekt für Anfänger und Fortgeschrittene</span>
+            <span>Perfekt für </span>
           </div>
         </div>
 

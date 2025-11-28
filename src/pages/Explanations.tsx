@@ -19,7 +19,7 @@ const Explanations = () => {
               </h1>
             </div>
             <p className="text-lg text-muted-foreground">
-              Grundlagen der C-Programmierung verständlich erklärt
+              Hoffentlich verständlich Erklärt 
             </p>
           </div>
           <div className="container mx-auto max-w-4xl space-y-4">
