@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { ChevronLeft, Lightbulb, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
+import { RunWidget } from "@/components/RunWidget";
 
 interface CodeDisplayProps {
   title: string;
@@ -81,6 +82,8 @@ export const CodeDisplay = ({
               )}
             </Button>
           </div>
+
+          <RunWidget code={code} language="c" />
 
           {showTip && (
             <div 

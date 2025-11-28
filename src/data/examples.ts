@@ -463,5 +463,155 @@ int main() {
     
     return 0;
 }`
-  }
+  },
+  {
+    id: "berechnung-ostern",
+    title: "Berechnung für Ostern in dem besagten Jahr",
+    icon: "🐣",
+    description: "Berechnet das Datum von Ostern für das jeweilige Jahr.",
+    tip: "Die Berechnungen sind teils sehr komplex, ändere diese nicht ab",
+    code: `#include <stdio.h>
+
+// Funktion die man aufrufen kann um ein kürzeres main hat, berechnung für ostern
+void berechne_ostern(int jahr, int* tag, int* monat) {
+    //metonischer Zyklus
+    int a = jahr % 19;
+    //Sonnenkalender-Parameter
+    int b = jahr % 4;
+    int c = jahr % 7;
+    //Jahrhundert-Korrektur
+    int k = jahr / 100;
+    int p = (8 * k + 13) / 25;
+    int q = k / 4;
+    //Zwischenberechnungen
+    int m = (15 + k - p - q) % 30;
+    int n = (4 + k - q) % 7;
+    //Hauptrechnung
+    int d = (19 * a + m) % 30;
+    int e = (2 * b + 4 * c + 6 * d + n) % 7;
+    
+    *tag = 22 + d + e; // Vorläufiges Oster Datum
+    *monat = 3; // März
+    
+    // Falls über den März
+    if (*tag > 31) {
+        *tag = *tag - 31;
+        *monat = 4; // April
+    }
+    
+    // Sonderfälle für Ostern
+    if (d == 29 && e == 6) {
+        *tag = 19; // Spezialfall
+    } else if (d == 28 && e == 6 && a > 10) {
+        *tag = 18; // Spezialfall 2
+    }
+}
+
+int main() {
+    int monat;
+    int jahr = 0; // Setzt das Jahr auf 0
+    int oster_tag, oster_monat;
+    
+    do {
+        printf("\n=== Menü ===\n");
+        printf("1 - Monatstage berechnen\n");
+        printf("2 - Osterdatum berechnen\n");
+        printf("3 - Beenden\n");
+        printf("Ihre Wahl: ");
+        
+        int wahl;
+        scanf("%d", &wahl);
+        
+        switch (wahl) {
+            case 1: {
+                // Zuerst Abfrage des Jahres
+                printf("Geben Sie das Jahr ein: ");
+                scanf("%d", &jahr);
+                
+                // Dann Monat abfragen
+                do {
+                    printf("Geben Sie den Monat ein (1-12): ");
+                    scanf("%d", &monat);
+                    
+                    switch (monat) {
+                        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                            printf("Der Monat hat 31 Tage.\n");
+                            break;
+                        case 4: case 6: case 9: case 11:
+                            printf("Der Monat hat 30 Tage.\n");
+                            break;
+                        case 2:
+                            if(jahr % 4 == 0 && (jahr % 100 != 0 || jahr % 400 == 0)) {
+                                printf("Es ist ein Schaltjahr\nDer Monat hat 29 Tage.\n");
+                            } else {
+                                printf("Der Monat hat 28 Tage.\n");
+                            }
+                            break;
+                        default: 
+                            printf("Ungültiger Monat! Bitte geben Sie eine Zahl zwischen 1 und 12 ein.\n");
+                    }
+                } while(monat < 1 || monat > 12);
+                break;
+            }
+            
+            case 2: {
+                // Osterdatum berechnen
+                printf("\nGeben Sie das Jahr für die Osterberechnung ein: ");
+                scanf("%d", &jahr);
+                
+                if (jahr < 1583) {
+                    printf("Hinweis: Die Berechnung ist für Jahre vor 1583 möglicherweise ungenau.\n");
+                }
+                
+                berechne_ostern(jahr, &oster_tag, &oster_monat);
+                
+                char monat_name[10];
+                if (oster_monat == 3) {
+                    sprintf(monat_name, "März");
+                } else {
+                    sprintf(monat_name, "April");
+                }
+                
+                printf("Ostern %d fällt auf den %d. %s\n", jahr, oster_tag, monat_name);
+                break;
+            }
+            
+            case 3:
+                printf("Programm wird beendet. Tschüss!\n");
+                return 0;
+                
+            default:
+                printf("Ungültige Wahl! Bitte wählen Sie 1, 2 oder 3.\n");
+        }
+        
+        // Zusatzinfo nur wenn das Jahr gültig ist
+        if ((wahl == 1 || wahl == 2) && jahr > 0) {
+            printf("\n--- Zusatzinformation ---\n");
+            
+            // Monatsberechnung zeigt dann ostern an
+            if (wahl == 1) {
+                berechne_ostern(jahr, &oster_tag, &oster_monat);
+                char monat_name[10];
+                if (oster_monat == 3) {
+                    sprintf(monat_name, "März");
+                } else {
+                    sprintf(monat_name, "April");
+                }
+                printf("Ostern %d: %d. %s\n", jahr, oster_tag, monat_name);
+            }
+            
+            // Für Osterberechnung: Zeige auch Schaltjahr-Info an
+            if (wahl == 2) {
+                if(jahr % 4 == 0 && (jahr % 100 != 0 || jahr % 400 == 0)) {
+                    printf("%d ist ein Schaltjahr.\n", jahr);
+                } else {
+                    printf("%d ist kein Schaltjahr.\n", jahr);
+                }
+            }
+        }
+        
+    } while(1); // Hört nur bei Beenden auf
+    
+    return 0;
+`  }
 ];
