@@ -331,5 +331,78 @@ int main() {
     
     return 0;
 }`
+  },
+  {
+    id: "case",
+    title: "Switch-Case Anweisungen",
+    icon: "🕹️",
+    content: `# Switch-Case Anweisungen
+
+Switch und Case Anweisungen ermöglichen es dir, eine Variable gegen mehrere mögliche Werte zu überprüfen und entsprechend darauf zu reagieren.
+
+## Grundstruktur:
+
+\`\`\`c
+switch (variable) {
+    case wert1:
+        // Code wenn variable == wert1
+        break;
+    case wert2:
+        // Code wenn variable == wert2
+        break;
+    default:
+        // Code wenn kein Fall zutrifft
+}
+\`\`\`
+
+## Wichtig:
+- \`break\` beendet den Switch-Block
+- \`default\` ist optional und wird ausgeführt, wenn kein case passt
+- Mehrere cases können zusammengefasst werden`,
+    codeExample: `#include <stdio.h>
+
+int main() {
+    int monat;
+    int jahr;
+    
+    do {
+        printf("Geben Sie den Monat ein: \\n");
+        scanf("%d", &monat);
+        
+        switch (monat) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                printf("Der Monat hat 31 Tage.\\n");
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                printf("Der Monat hat 30 Tage.\\n");
+                break;
+            case 2:
+                printf("Geben Sie das Jahr ein: \\n");
+                scanf("%d", &jahr);
+                if (jahr % 4 == 0 && (jahr % 100 != 0 || jahr % 400 == 0)) {
+                    printf("Es ist ein Schaltjahr.\\nDer Monat hat 29 Tage.\\n");
+                } else {
+                    printf("Der Monat hat 28 Tage.\\n");
+                }
+                break;
+            default:
+                printf("Ungültiger Monat\\n");
+        }
+    } while (monat < 1 || monat > 12);
+    
+    return 0;
+}`
+
+
+
   }
 ];
