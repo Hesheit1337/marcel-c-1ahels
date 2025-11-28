@@ -80,7 +80,25 @@ if (Bedingung) {
 
 - **&&** : UND (beide Bedingungen müssen wahr sein)
 - **||** : ODER (mindestens eine Bedingung muss wahr sein)
-- **!** : NICHT (kehrt die Bedingung um)`,
+- **!** : NICHT (kehrt die Bedingung um)
+
+## Wahrheitstabellen:
+
+### UND (&&):
+- true && true = **true**
+- true && false = **false**
+- false && true = **false**
+- false && false = **false**
+
+### ODER (||):
+- true || true = **true**
+- true || false = **true**
+- false || true = **true**
+- false || false = **false**
+
+### NICHT (!):
+- !true = **false**
+- !false = **true**`,
     codeExample: `#include <stdio.h>
 
 int main() {
@@ -401,8 +419,106 @@ int main() {
     
     return 0;
 }`
+  },
+  {
+    id: "logische-operatoren",
+    title: "Logische Operatoren",
+    icon: "‼️",
+    content: `# Logische Operatoren in C
 
+Logische Operatoren kombinieren mehrere Bedingungen zu einer Gesamtbedingung.
 
+## Die drei Hauptoperatoren:
 
+### 1. UND-Operator (&&)
+**Beide Bedingungen müssen erfüllt sein:**
+
+\`\`\`c
+if (alter >= 18 && alter <= 65) {
+    printf("Du bist im Erwerbsalter\\n");
+}
+\`\`\`
+
+**Wahrheitstabelle:**
+- true && true = **true**
+- true && false = **false**
+- false && true = **false**
+- false && false = **false**
+
+### 2. ODER-Operator (||)
+**Mindestens eine Bedingung muss erfüllt sein:**
+
+\`\`\`c
+if (tag == "Samstag" || tag == "Sonntag") {
+    printf("Wochenende!\\n");
+}
+\`\`\`
+
+**Wahrheitstabelle:**
+- true || true = **true**
+- true || false = **true**
+- false || true = **true**
+- false || false = **false**
+
+### 3. NICHT-Operator (!)
+**Kehrt das Ergebnis um (Negation):**
+
+\`\`\`c
+if (!(alter < 18)) {
+    printf("Du darfst eintreten\\n");
+}
+// Das ist das gleiche wie: if (alter >= 18)
+\`\`\`
+
+**Wahrheitstabelle:**
+- !true = **false**
+- !false = **true**
+
+## Kombinationen:
+
+Du kannst Operatoren auch kombinieren:
+
+\`\`\`c
+if ((alter >= 18 && alter <= 65) || alter > 70) {
+    printf("Besondere Kategorie\\n");
+}
+\`\`\`
+
+## Operator-Priorität (von höchst zu niedrig):
+1. **!** (NICHT)
+2. **&&** (UND)
+3. **||** (ODER)`,
+    codeExample: `#include <stdio.h>
+
+int main() {
+    int alter = 25;
+    int hat_fuehrerschein = 1;  // 1 = true, 0 = false
+    
+    // UND-Operator (&&)
+    if (alter >= 18 && hat_fuehrerschein == 1) {
+        printf("Du darfst Auto fahren!\\n\\n");
+    }
+    
+    // ODER-Operator (||)
+    int tag = 7;  // 6 = Samstag, 7 = Sonntag
+    if (tag == 6 || tag == 7) {
+        printf("Es ist Wochenende!\\n\\n");
+    }
+    
+    // NICHT-Operator (!)
+    if (!(alter < 18)) {
+        printf("Du bist volljaehrig\\n\\n");
+    }
+    
+    // Komplexe Bedingung mit Kombinationen
+    int geld = 50;
+    int hunger = 1;
+    
+    if ((geld > 20 && hunger == 1) || geld > 100) {
+        printf("Lass uns essen gehen!\\n");
+    }
+    
+    return 0;
+}`
   }
 ];
