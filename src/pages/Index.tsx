@@ -82,24 +82,7 @@ const Index = () => {
           </Card>
         </div>
 
-        {/* Info Section */}
-        <Card className="max-w-3xl mx-auto p-8 bg-gradient-to-br from-secondary/30 to-secondary/10 border-2 border-border/50 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-          <h3 className="text-2xl font-bold mb-4 text-center">📝 Einfach erweiterbar</h3>
-          <div className="space-y-3 text-muted-foreground">
-            <p className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span><strong>Neue Beispiele hinzufügen:</strong> Bearbeite <code className="bg-code-bg px-2 py-1 rounded text-sm">src/data/examples.ts</code></span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-accent font-bold">•</span>
-              <span><strong>Neue Erklärungen hinzufügen:</strong> Bearbeite <code className="bg-code-bg px-2 py-1 rounded text-sm">src/data/explanations.ts</code></span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>Alle Änderungen werden automatisch übernommen – kein kompliziertes Setup nötig!</span>
-            </p>
-          </div>
-        </Card>
+
       </div>
     </div>
   );
