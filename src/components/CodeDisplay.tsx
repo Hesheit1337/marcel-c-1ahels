@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { ChevronLeft, Lightbulb, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
-import { RunWidget } from "@/components/RunWidget";
 
 interface CodeDisplayProps {
   title: string;
@@ -83,8 +82,7 @@ export const CodeDisplay = ({
             </Button>
           </div>
 
-          <RunWidget code={code} language="c" />
-
+          {/* RunWidget entfernt — Ausführen von Code entfernt auf Wunsch des Users */}
           {showTip && (
             <div 
               className="mb-6 p-5 bg-gradient-to-r from-tip-bg to-tip-bg/50 border-l-4 border-tip-border rounded-lg shadow-md animate-slide-up backdrop-blur-sm"
