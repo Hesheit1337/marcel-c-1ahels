@@ -333,5 +333,27 @@ int main() {
   if(bei2>bei1 && bei2>bei3){ printf("Beispiel 2 ist das Beste mit %d",bei2); }
   if(bei3>bei1 && bei3>bei2){ printf("Beispiel 3 ist das Beste mit %d",bei3); }
 }`
+    },
+    {
+    id: "sleep",
+    title: "Verzögerung",
+    icon: "⏰",
+    description: "Verzögerung der Ausführung/Pause",
+    tip: "Zeitangabe muss in Millisekunden sein da es sonst keine Auswirkung hat.",
+    code: `#include <stdio.h>
+#include <unistd.h> //includiert die Bibliothek für usleep
+ 
+int main() {
+    char text[] = "Hallo Welt!";
+
+    for (int i = 0; text[i] != '\0'; i++) {
+        printf("%c", text[i]);
+        fflush(stdout);
+        usleep(100000); 
+    }
+    printf("\n");
+    return 0;
+}
+}`
   }
 ];
