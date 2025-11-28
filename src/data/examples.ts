@@ -513,10 +513,10 @@ int main() {
     int oster_tag, oster_monat;
     
     do {
-        printf("\n=== Menü ===\n");
-        printf("1 - Monatstage berechnen\n");
-        printf("2 - Osterdatum berechnen\n");
-        printf("3 - Beenden\n");
+        printf("\\n=== Menü ===\\n");
+        printf("1 - Monatstage berechnen\\n");
+        printf("2 - Osterdatum berechnen\\n");
+        printf("3 - Beenden\\n");
         printf("Ihre Wahl: ");
         
         int wahl;
