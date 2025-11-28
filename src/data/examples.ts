@@ -542,7 +542,8 @@ int main() {
                             break;
                         case 2:
                             if(jahr % 4 == 0 && (jahr % 100 != 0 || jahr % 400 == 0)) {
-                                printf("Es ist ein Schaltjahr\nDer Monat hat 29 Tage.\n");
+                                printf("Es ist ein Schaltjahr\n");
+                                printf("Der Monat hat 29 Tage.\n");
                             } else {
                                 printf("Der Monat hat 28 Tage.\n");
                             }
