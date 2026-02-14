@@ -1,5 +1,7 @@
-import { BookOpen, Code2, Home } from "lucide-react";
+import { BookOpen, Code2, Home, Moon, Sun } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
+import { useTheme } from "@/hooks/use-theme";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -20,6 +22,7 @@ const menuItems = [
 
 export function AppSidebar() {
   const { state } = useSidebar();
+  const { isDark, toggleTheme } = useTheme();
   const isCollapsed = state === "collapsed";
 
   return (
@@ -47,6 +50,25 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup className="mt-auto">
+          <SidebarGroupContent>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleTheme}
+              className="w-full"
+              title={isDark ? "Light Mode" : "Dark Mode"}
+            >
+              {isDark ? (
+                <Sun className="w-4 h-4 mr-2" />
+              ) : (
+                <Moon className="w-4 h-4 mr-2" />
+              )}
+              {!isCollapsed && (isDark ? "Light Mode" : "Dark Mode")}
+            </Button>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
