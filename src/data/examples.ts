@@ -774,5 +774,41 @@ int automiete(int h){
 int gesamtkosten(int hotel, int flug, int aut){
     return hotel + flug + aut;
 }`
+  },
+  {
+    id:"Aktiengewinn",
+    title: "Aktiengewinn",
+    icon: "📈"
+    description: "Berechnet den Gewinn oder Verlust aus einer Aktieninvestition basierend auf Kauf- und Verkaufspreis sowie der Anzahl der Aktien.",
+    tip: "Die Berechnung basiert auf der Formel: Gewinn/Verlust = (Verkaufspreis - Kaufpreis) * Anzahl der Aktien.",
+    code: `#include <stdio.h>
+    int aktiengewinn(float x, float y, float z);
+ 
+int main() {
+    float a, b, c;
+    float gewinn;
+ 
+    printf("Wie groß hat die Aktie gekostet:\n");
+    scanf("%f", &a);
+ 
+    printf("Wie viele Aktien besitzt du:\n");
+    scanf("%f", &b);
+ 
+    printf("Wie viel kostet die Aktie jetzt:\n");
+    scanf("%f", &c);
+ 
+    gewinn = aktiengewinn(a, b, c);
+ 
+    printf("Ihr Gewinn liegt bei: %.2f\n", gewinn);
+ 
+    return 0;
+}
+ 
+int aktiengewinn(float x, float y, float z) {
+    int alt = x * y;
+    int neu = z * y;
+ 
+    return neu - alt;
+}`
   }
 ];
