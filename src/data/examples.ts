@@ -810,5 +810,62 @@ int aktiengewinn(float x, float y, float z) {
  
     return neu - alt;
 }`
+  },
+  {
+    id:"Fakultaet",
+    title: "Fakultät",
+    icon: "🔢",
+    description: "Berechnet die Fakultät einer gegebenen Zahl.",
+    tip: "Die Fakultät von n (n!) ist das Produkt aller positiven ganzen Zahlen von 1 bis n.",
+    code: `#include <stdio.h>
+    int fakultaet(int n, int x);
+ 
+int main(void){
+  int a;
+  int b;
+  printf("Geben sie eine Zahl ein: ");
+  scanf("%d",&a);
+  printf("Geben sie die Groesste Zahl ein: ");
+  scanf("%d",&b);
+
+  int faku = fakultaet(a,b);
+  printf("%d\n",faku);
+
+}
+int fakultaet(int n, int x){
+  int i;
+  int fakul=0;
+  for(i=n;i<=x;i++)
+  {
+    fakul=fakul+i;
+  }
+  return fakul;
+}`
+  },
+  {
+    id:"Hochrechnung",
+    title: "Hochrechnung",
+    icon: "📊",
+    description: "Berechnet die Hochrechnung eines gegebenen Wertes über eine bestimmte Anzahl von Iterationen.",
+    tip: "Die Hochrechnung basiert auf der Formel: Hochrechnung = Wert * (1 + Wachstumsrate)^Anzahl der Iterationen.",
+    code: `#include <stdio.h>
+    #include <math.h>
+    int hoch2(int x);
+ 
+int main(void){
+  int a;
+
+ 
+  printf("Geben sie eine Nummer ein welche sie hoch 2 wollen: ");
+  scanf("%d", &a); 
+  hoch2(a);
+  printf("%d",hoch2(a));
+  return 0;
+ 
+}
+ 
+int hoch2(int x){
+  return x*x;
+}` 
   }
 ];
