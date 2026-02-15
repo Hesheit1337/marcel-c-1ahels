@@ -778,7 +778,7 @@ int gesamtkosten(int hotel, int flug, int aut){
   {
     id:"Aktiengewinn",
     title: "Aktiengewinn",
-    icon: "📈"
+    icon: "📈",
     description: "Berechnet den Gewinn oder Verlust aus einer Aktieninvestition basierend auf Kauf- und Verkaufspreis sowie der Anzahl der Aktien.",
     tip: "Die Berechnung basiert auf der Formel: Gewinn/Verlust = (Verkaufspreis - Kaufpreis) * Anzahl der Aktien.",
     code: `#include <stdio.h>
@@ -867,5 +867,55 @@ int main(void){
 int hoch2(int x){
   return x*x;
 }` 
+  },
+  {
+    id:"Arrayzählen",
+    title: "Arrayzählen",
+    icon: "📦",
+    description: "Zählt die Anzahl der Elemente in einem Array, die einen bestimmten Wert haben.",
+    tip: "Die Zählung basiert auf einer Schleife, die jedes Element des Arrays überprüft und einen Zähler erhöht, wenn das Element dem gesuchten Wert entspricht.",
+    code: `#include <stdio.h>
+    #include <stdio.h>
+
+// Funktionsdeklaration (Prototyp)
+int countInRange(int arr[], int length, int minVal, int maxVal);
+
+int main() {
+    // Test-Array aus der Aufgabenstellung
+    int numbers[] = {14, 1, 22, 17, 36, 7, -43, 5};
+    int length = sizeof(numbers) / sizeof(numbers[0]);
+
+    // Testaufruf 1: zwischen 4 und 17 (sollte 4 zurückgeben)
+    int count1 = countInRange(numbers, length, 4, 17);
+    printf("Anzahl zwischen 4 und 17: %d\n", count1);   // → 4
+
+    // Weitere Testfälle
+    printf("Anzahl zwischen 1 und 22: %d\n", 
+           countInRange(numbers, length, 1, 22));       // → 5
+
+    printf("Anzahl zwischen 0 und 10: %d\n", 
+           countInRange(numbers, length, 0, 10));       // → 2
+
+    printf("Anzahl zwischen -50 und -40: %d\n", 
+           countInRange(numbers, length, -50, -40));    // → 1
+
+    printf("Anzahl zwischen 100 und 200: %d\n", 
+           countInRange(numbers, length, 100, 200));    // → 0
+
+    return 0;
+}
+
+// Die geforderte Funktion
+int countInRange(int arr[], int length, int minVal, int maxVal) {
+    int count = 0;
+    
+    for (int i = 0; i < length; i++) {
+        if (arr[i] >= minVal && arr[i] <= maxVal) {
+            count++;
+        }
+    }
+    
+    return count;
+}`
   }
 ];
