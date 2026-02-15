@@ -614,5 +614,80 @@ int main() {
     } while(1); // Hört nur bei Beenden auf
     
     return 0;
-`  }
+}`,
+  },
+  {
+    id: "nim-spiel",
+    title: "Nim-Spiel",
+    icon: "🎮",
+    description: "Ein einfaches Spiel, bei dem Spieler abwechselnd Stöcker entfernen.",
+    tip: "Es soll eine Random zahl generiert werden die zwischen 1 und 3 liegt, diese Zahl gibt an wie viele Stöcker der Computer entfernt.",
+    code: `#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+ 
+int minus(int x, int y);
+void zeigeStoecke(int anzahl);
+ 
+int main() {
+    int stocker=13;
+    int eingabe;
+    int computer;
+    int spielerAmZug= 1;
+ 
+    srand(time(NULL));
+ 
+     
+    printf("Start mit %d Stöcken\\n", stocker);
+    zeigeStoecke(stocker);
+ 
+    while (stocker > 0) {
+ 
+        if (spielerAmZug) {
+            printf("Dein Zug. Wie viele Stöcke (1-3)? ");
+            scanf("%d", &eingabe);
+ 
+            if (eingabe < 1 || eingabe > 3 || eingabe > stocker) {
+                printf("Ungültige Eingabe\\n\\n");
+                continue;
+            }
+ 
+            stocker = minus(stocker, eingabe);
+            printf("Du hast %d Stöcke genommen.\\n", eingabe);
+        } 
+        else {
+            computer = rand() % 3 + 1;
+            if (computer > stocker) {
+                computer = stocker;
+            }
+ 
+            stocker = minus(stocker, computer);
+            printf("Computer nimmt %d Stöcke.\\n", computer);
+        }
+ 
+        zeigeStoecke(stocker);
+        spielerAmZug = !spielerAmZug;
+    }
+ 
+    if (spielerAmZug) {
+        printf("Du hast verloren\\n");
+    } else {
+        printf("Du hast gewonnen\\n");
+    }
+ 
+ 
+    return 0;
+}
+ 
+int minus(int x, int y) {
+    return x - y;
+}
+ 
+void zeigeStoecke(int anzahl) {
+    for (int i = 0; i < anzahl; i++) {
+        printf("|");
+    }
+    printf("\\n\\n");
+}`
+  }
 ];
