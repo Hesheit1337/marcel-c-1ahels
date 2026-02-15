@@ -689,5 +689,90 @@ void zeigeStoecke(int anzahl) {
     }
     printf("\\n\\n");
 }`
+  },
+  {
+    id: "urlaubsbuchung",
+    title: "Urlaubsbuchung",
+    icon: "🏖️",
+    description: "Ein einfaches System zur Urlaubsbuchung, das die Verfügbarkeit von Urlaubstagen überprüft.",
+    tip: "Für jede Sache eine Funktion erstellen, z.B. für den Flug.",
+    code: `#include <stdio.h>
+#include <math.h>
+ 
+int hotelkosten(int z);
+int flug(char y);
+ 
+int automiete(int h);
+int gesamtkosten(int hotel, int flug, int aut);
+ 
+ 
+int main() {
+    char ort;
+    int a;
+    int b;
+    printf("Type in how many days you plan on staying:\n");
+    scanf("%d", &a);
+    int kosten = hotelkosten(a);
+    printf("The Hotel costs: %d\n", kosten);
+    printf("Type in the city (C/L/P/T): ");
+    scanf(" %c", &ort);
+    flug(ort);
+ 
+  printf("How many days do you need your rental car for?\n");
+  scanf("%d",&b);
+  automiete(b);
+  int er2 = automiete(b);
+  printf("%d\n",er2);
+  int kostenHotel = hotelkosten(a);
+  int kostenFlug = flug(ort);
+  int kostenAuto = automiete(b);
+ 
+  int gesamt = gesamtkosten(kostenHotel, kostenFlug, kostenAuto);
+ 
+  printf("The trip costs: %d€\n", gesamt);
+ 
+ 
+    return 0;
+}
+ 
+int hotelkosten(int z) {
+    int cost = 140;
+    return cost * z;
+}
+ 
+int flug(char y) {
+    if (y == 'c' || y == 'C') {
+        printf("The Flight Costs 183€\n");
+        return 183;
+    } 
+    else if (y == 'l' || y == 'L') {
+        printf("The Flight Costs 475€\n");
+        return 475;
+    } 
+    else if (y == 'p' || y == 'P') {
+        printf("The Flight Costs 222€\n");
+        return 222;
+    } 
+    else if (y == 't' || y == 'T') {
+        printf("The Flight Costs 220€\n");
+        return 220;
+    } 
+    else {
+        printf("Unexplored city\n");
+        return 0;
+    }
+}
+ 
+int automiete(int h){
+  int miete=40;
+  int berechnung = miete * h;
+  if(h>=7){
+    int berechnung = berechnung - 50;
+  }
+  return berechnung;
+}
+int gesamtkosten(int hotel, int flug, int aut){
+    return hotel + flug + aut;
+}`
   }
 ];
