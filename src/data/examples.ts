@@ -917,5 +917,30 @@ int countInRange(int arr[], int length, int minVal, int maxVal) {
     
     return count;
 }`
-  }
+},
+{
+    id:"Sinusberechnung",
+    title: "Sinusberechnung",
+    icon: "📐",
+    description: "Berechnet den Sinus eines Winkels in Grad.",
+    tip: "Die Berechnung basiert auf der Umrechnung von Grad in Bogenmaß und der Verwendung der sin-Funktion aus der math.h Bibliothek.",
+    code: `#include <stdio.h>
+    #include <stdio.h>
+#include <math.h>
+
+int main(){
+    int grad;
+    double rad;
+    
+    printf("Bitte gib den Winkel in Grad ein: ");
+    scanf("%d",&grad);
+    
+    rad=grad*M_PI / 180;
+    printf("Sinus = %0.2lf\n",sin(rad));
+    
+    return 0;
+    
+}`
+}
+  
 ];
