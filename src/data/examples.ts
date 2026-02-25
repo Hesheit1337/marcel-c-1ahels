@@ -936,7 +936,7 @@ int main(){
     scanf("%d",&grad);
     
     rad=grad*M_PI / 180;
-    printf("Sinus = %0.2lf\n",sin(rad));
+    printf("Sinus = %0.2lf",sin(rad));
     
     return 0;
     
