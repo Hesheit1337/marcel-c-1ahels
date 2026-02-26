@@ -951,6 +951,7 @@ int main(){
     code: `#include <stdio.h>
 #include <math.h>
 double hyp(double x,double y);
+double alpha(double x,double y);
 
 int main(){
 double a,b,c;
@@ -966,7 +967,12 @@ return 0;
 double hyp(double x,double y){
     return sqrt((y*y)+(x*x));
 
+}
+double alpha(double x, double y){
+    return atan2(y, x);
+    
 }`,
 },
+
   
 ];
