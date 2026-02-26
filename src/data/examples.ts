@@ -941,6 +941,32 @@ int main(){
     return 0;
     
 }`
+},
+{
+    id:"Pythagoras",
+    title: "Pythagoras",
+    icon: "📏",
+    description: "Berechnet die Länge der Hypotenuse eines rechtwinkligen Dreiecks basierend auf den Längen der beiden Katheten.",
+    tip: "Die Berechnung basiert auf dem Satz des Pythagoras: c = √(a² + b²), wobei a und b die Längen der Katheten und c die Länge der Hypotenuse ist.",
+    code: `#include <stdio.h>
+#include <math.h>
+double hyp(double x,double y);
+
+int main(){
+double a,b,c;
+printf("Geben sie den Wert von a ein: ");
+scanf("%lf",&a);
+printf("Geben sie den Wert von b ein: ");
+scanf("%lf",&b);
+c = hyp(a,b);
+printf("Hypothenuse = %lf",c);
+return 0;
+
 }
+double hyp(double x,double y){
+    return sqrt((y*y)+(x*x));
+
+}`,
+},
   
 ];
