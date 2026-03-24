@@ -951,7 +951,7 @@ int main(){
     code: `#include <stdio.h>
 #include <math.h>
 double hyp(double x,double y);
-double alpha(double geg,double an);
+double alpha(double x,double y);
 
 int main(){
 double a,b,c;
@@ -960,11 +960,7 @@ scanf("%lf",&a);
 printf("Geben sie den Wert von b ein: ");
 scanf("%lf",&b);
 c = hyp(a,b);
-double alph = alpha(a,b);
-    
-printf("Hypothenuse = %lf\n",c);
-printf("Alpha = %lf",alph);
-    
+printf("Hypothenuse = %lf",c);
 return 0;
 
 }
@@ -972,8 +968,8 @@ double hyp(double x,double y){
     return sqrt((y*y)+(x*x));
 
 }
-double alpha(double geg, double an){
-    return atan2(geg, an) * 180.0 / M_PI;
+double alpha(double x, double y){
+    return atan2(y, x);
     
 }`,
 },
