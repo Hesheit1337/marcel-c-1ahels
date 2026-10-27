@@ -1138,5 +1138,53 @@ float durchschnitt(int noten[]){
 }
     `
 },
+{
+  id: "Entfernen",
+  klasse: 2,
+  title: "Array Index Entfernen",
+  icon: "🧮",
+  description: "Wir entfernen bei einem Array im nachhinein eine Stelle",
+  tip: "Man muss bei der For Schleife aufpassen das man nicht sein ganzes Array überschreibt",
+  code: `#include <stdio.h>
+ 
+#define MAX 36
+ 
+int n=4;
+void entferne(int noten[MAX],int index);
+void gibaus(int noten[MAX]);
+ 
 
+int main(){
+int noten[]={3,1,5,2};
+ 
+int index;
+ 
+  printf("Geben sie den Index der zu löschenden Noten ein: ");
+  scanf("%d",&index);
+ 
+  entferne(noten, index);
+  gibaus(noten);
+
+  return 0;
+}
+ 
+void entferne(int noten[MAX],int index){
+if(index < 0 || index > n-1){
+  printf("Ungültiger Index");
+}else{
+  //Ab index+1 alle Elemente um 1 Stelle nach Links verschieben
+ 
+  for(int i=index + 1 ;i < n;i++){
+    noten[i-1] = noten[i];
+   }
+  n--;
+}
+}
+void gibaus(int noten[MAX]){
+  for(int i=0;i<n;i++){
+    printf("Index an der Stelle %d : %d\n",i,noten[i]);
+  }
+}
+    `
+},
 ];
