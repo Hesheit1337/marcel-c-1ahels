@@ -27,7 +27,22 @@ const Index = () => {
           </p>
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Sparkles className="w-4 h-4" />
-            <span>Perfekt für </span>
+            <span>Perfekt für die 1. und 2. Klasse</span>
+          </div>
+        </div>
+
+        {/* Klassenwahl */}
+        <div className="max-w-3xl mx-auto mb-12 text-center animate-slide-up">
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Wähle deine Klasse</h2>
+          <div className="grid grid-cols-2 gap-6">
+            {[1, 2].map((k) => (
+              <Link key={k} to={`/examples?klasse=${k}`} className="no-underline">
+                <Card className="p-8 border-2 border-primary/20 hover:border-primary/60 bg-gradient-to-br from-card to-card/80 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-primary/20">
+                  <div className="text-5xl mb-3">{k === 1 ? "🌱" : "🚀"}</div>
+                  <div className="text-2xl font-bold text-card-foreground">{k}. Klasse</div>
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
 
