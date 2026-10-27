@@ -1090,12 +1090,11 @@ int fuegeein(int noten[],int index2,int neu){
 `
 },
 {
-{
   id: "Durchschnitt eines Arrays",
   klasse: 2,
   title: "Durchschnitt",
   icon: "🧮",
-   description: "Wir berechnen den Durchschnitt eines Arrays",
+description: "Wir berechnen den Durchschnitt eines Arrays",
   tip: "Wir müssen eine Rückgabe von dem Array haben / in der Funktion eine Rückgabe",
   code: `#include <stdio.h>
 
@@ -1139,4 +1138,5 @@ float durchschnitt(int noten[]){
 }
     `
 },
+
 ];
