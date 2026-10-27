@@ -1,5 +1,6 @@
 export interface CodeExample {
   id: string;
+  klasse: 1 | 2; // 1 = 1. Klasse, 2 = 2. Klasse
   title: string;
   icon: string;
   description: string;
@@ -10,6 +11,7 @@ export interface CodeExample {
 export const codeExamples: CodeExample[] = [
   {
     id: "wechselboerse",
+    klasse: 1,
     title: "Wechselbörse",
     icon: "💱",
     description: "Euro ↔ Dollar Umrechnung.",
@@ -39,6 +41,7 @@ int main() {
   },
   {
     id: "kinokarten",
+    klasse: 1,
     title: "Kinokarten",
     icon: "🎬",
     description: "Ticketpreis nach Alter.",
@@ -70,6 +73,7 @@ int main() {
   },
   {
     id: "noten",
+    klasse: 1,
     title: "Noten Punkte",
     icon: "📚",
     description: "Ermittelt Note basierend auf Punkten.",
@@ -103,6 +107,7 @@ int main() {
   },
   {
     id: "monatstage",
+    klasse: 1,
     title: "Monatstage",
     icon: "📅",
     description: "Gibt die Tage eines Monats aus.",
@@ -131,6 +136,7 @@ int main() {
   },
   {
     id: "schaltjahr",
+    klasse: 1,
     title: "Schaltjahr",
     icon: "🗓️",
     description: "Überprüft, ob ein Jahr ein Schaltjahr ist und gibt Tage des Monats aus.",
@@ -158,6 +164,7 @@ int main() {
   },
   {
     id: "ssp",
+    klasse: 1,
     title: "Stein/Schere/Papier",
     icon: "✊",
     description: "Spiel gegen den Computer.",
@@ -187,6 +194,7 @@ int main() {
   },
   {
     id: "zufallsadd",
+    klasse: 1,
     title: "Zufalls-Addition",
     icon: "🎲",
     description: "Einfaches Additionsspiel mit Zufallszahlen.",
@@ -211,6 +219,7 @@ int main() {
   },
   {
     id: "zufallsrech",
+    klasse: 1,
     title: "Zufalls-Rechnen",
     icon: "➕",
     description: "Zufällige Rechenaufgaben mit Operatoren.",
@@ -242,6 +251,7 @@ int main() {
   },
   {
     id: "hochzaehlen",
+    klasse: 1,
     title: "Hochzählen",
     icon: "⬆️",
     description: "Zählt von 1 bis zur Obergrenze.",
@@ -261,6 +271,7 @@ int main() {
   },
   {
     id: "runterzaehlen",
+    klasse: 1,
     title: "Runterzählen",
     icon: "⬇️",
     description: "Zählt von groß nach klein.",
@@ -281,6 +292,7 @@ int main() {
   },
   {
     id: "array",
+    klasse: 1,
     title: "Array Ausgabe",
     icon: "📦",
     description: "Gibt alle Array-Werte aus.",
@@ -297,6 +309,7 @@ int main() {
   },
   {
     id: "durchschnitt",
+    klasse: 1,
     title: "Durchschnitt berechnen",
     icon: "📊",
     description: "Berechnet Durchschnitt aus drei Beispielen.",
@@ -315,6 +328,7 @@ int main() {
   },
   {
     id: "besterwert",
+    klasse: 1,
     title: "Bester Wert",
     icon: "🏆",
     description: "Findet das beste Beispiel.",
@@ -336,6 +350,7 @@ int main() {
     },
     {
     id: "sleep",
+    klasse: 1,
     title: "Verzögerung",
     icon: "⏰",
     description: "Verzögerung der Ausführung/Pause",
@@ -358,6 +373,7 @@ int main() {
   },
   {
     id: "Flugzeugreservierung",
+    klasse: 1,
     title: "Flugzeugreservierung",
     icon: "✈️",
     description: "Reservierungssystem für Flugzeugsitze.",
@@ -466,6 +482,7 @@ int main() {
   },
   {
     id: "berechnung-ostern",
+    klasse: 1,
     title: "Berechnung für Ostern in dem besagten Jahr",
     icon: "🐣",
     description: "Berechnet das Datum von Ostern für das jeweilige Jahr.",
@@ -618,6 +635,7 @@ int main() {
   },
   {
     id: "nim-spiel",
+    klasse: 1,
     title: "Nim-Spiel",
     icon: "🎮",
     description: "Ein einfaches Spiel, bei dem Spieler abwechselnd Stöcker entfernen.",
@@ -692,6 +710,7 @@ void zeigeStoecke(int anzahl) {
   },
   {
     id: "urlaubsbuchung",
+    klasse: 1,
     title: "Urlaubsbuchung",
     icon: "🏖️",
     description: "Ein einfaches System zur Urlaubsbuchung, das die Verfügbarkeit von Urlaubstagen überprüft.",
@@ -777,6 +796,7 @@ int gesamtkosten(int hotel, int flug, int aut){
   },
   {
     id:"Aktiengewinn",
+    klasse: 1,
     title: "Aktiengewinn",
     icon: "📈",
     description: "Berechnet den Gewinn oder Verlust aus einer Aktieninvestition basierend auf Kauf- und Verkaufspreis sowie der Anzahl der Aktien.",
@@ -813,6 +833,7 @@ int aktiengewinn(float x, float y, float z) {
   },
   {
     id:"Fakultaet",
+    klasse: 1,
     title: "Fakultät",
     icon: "🔢",
     description: "Berechnet die Fakultät einer gegebenen Zahl.",
@@ -844,6 +865,7 @@ int fakultaet(int n, int x){
   },
   {
     id:"Hochrechnung",
+    klasse: 1,
     title: "Hochrechnung",
     icon: "📊",
     description: "Berechnet die Hochrechnung eines gegebenen Wertes über eine bestimmte Anzahl von Iterationen.",
@@ -870,6 +892,7 @@ int hoch2(int x){
   },
   {
     id:"Arrayzählen",
+    klasse: 1,
     title: "Arrayzählen",
     icon: "📦",
     description: "Zählt die Anzahl der Elemente in einem Array, die einen bestimmten Wert haben.",
@@ -920,6 +943,7 @@ int countInRange(int arr[], int length, int minVal, int maxVal) {
 },
 {
     id:"Sinusberechnung",
+    klasse: 1,
     title: "Sinusberechnung",
     icon: "📐",
     description: "Berechnet den Sinus eines Winkels in Grad.",
@@ -944,6 +968,7 @@ int main(){
 },
 {
     id:"Pythagoras",
+    klasse: 1,
     title: "Pythagoras",
     icon: "📏",
     description: "Berechnet die Länge der Hypotenuse eines rechtwinkligen Dreiecks basierend auf den Längen der beiden Katheten.",

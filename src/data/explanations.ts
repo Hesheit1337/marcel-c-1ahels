@@ -1,5 +1,6 @@
 export interface Explanation {
   id: string;
+  klasse: 1 | 2; // 1 = 1. Klasse, 2 = 2. Klasse
   title: string;
   icon: string;
   content: string;
@@ -9,6 +10,7 @@ export interface Explanation {
 export const explanations: Explanation[] = [
   {
     id: "variablen",
+    klasse: 1,
     title: "Variablen in C",
     icon: "📦",
     content: `# Variablen in C
@@ -51,6 +53,7 @@ int main() {
   },
   {
     id: "if-else",
+    klasse: 1,
     title: "If-Else Bedingungen",
     icon: "🔀",
     content: `# If-Else Bedingungen
@@ -128,6 +131,7 @@ int main() {
   },
   {
     id: "schleifen",
+    klasse: 1,
     title: "Schleifen (Loops)",
     icon: "🔁",
     content: `# Schleifen in C
@@ -200,6 +204,7 @@ int main() {
   },
   {
     id: "arrays",
+    klasse: 1,
     title: "Arrays (Listen)",
     icon: "📋",
     content: `# Arrays in C
@@ -269,6 +274,7 @@ int main() {
   },
   {
     id: "funktionen",
+    klasse: 1,
     title: "Funktionen",
     icon: "⚙️",
     content: `# Funktionen in C
@@ -352,6 +358,7 @@ int main() {
   },
   {
     id: "case",
+    klasse: 1,
     title: "Switch-Case Anweisungen",
     icon: "🕹️",
     content: `# Switch-Case Anweisungen
@@ -422,6 +429,7 @@ int main() {
   },
   {
     id: "logische-operatoren",
+    klasse: 1,
     title: "Logische Operatoren",
     icon: "‼️",
     content: `# Logische Operatoren in C

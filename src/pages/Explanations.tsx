@@ -2,10 +2,13 @@ import { useState } from "react";
 import { ExplanationCard } from "@/components/ExplanationCard";
 import { ExplanationDisplay } from "@/components/ExplanationDisplay";
 import { explanations, Explanation } from "@/data/explanations";
+import { KlassenAuswahl, Klasse } from "@/components/KlassenAuswahl";
 import { BookOpen } from "lucide-react";
 
 const Explanations = () => {
   const [selectedExplanation, setSelectedExplanation] = useState<Explanation | null>(null);
+  const [klasse, setKlasse] = useState<Klasse>(1);
+  const sichtbareErklaerungen = explanations.filter((e) => e.klasse === klasse);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20 py-12 px-4">
@@ -22,8 +25,14 @@ const Explanations = () => {
               Hoffentlich verständlich Erklärt 
             </p>
           </div>
+          <KlassenAuswahl value={klasse} onChange={setKlasse} />
+          {sichtbareErklaerungen.length === 0 && (
+            <p className="text-center text-muted-foreground">
+              Für die {klasse}. Klasse gibt es noch keine Erklärungen – bald mehr! 🚧
+            </p>
+          )}
           <div className="container mx-auto max-w-4xl space-y-4">
-            {explanations.map((explanation, index) => (
+            {sichtbareErklaerungen.map((explanation, index) => (
               <ExplanationCard
                 key={explanation.id}
                 icon={explanation.icon}

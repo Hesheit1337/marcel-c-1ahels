@@ -2,17 +2,23 @@ import { useState, useEffect } from "react";
 import { ExampleCard } from "@/components/ExampleCard";
 import { CodeDisplay } from "@/components/CodeDisplay";
 import { codeExamples, CodeExample } from "@/data/examples";
+import { KlassenAuswahl, Klasse } from "@/components/KlassenAuswahl";
 import { Code2 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
 const Examples = () => {
   const [selectedExample, setSelectedExample] = useState<CodeExample | null>(null);
+  const [klasse, setKlasse] = useState<Klasse>(1);
   const { id } = useParams<{ id?: string }>();
+  const sichtbareBeispiele = codeExamples.filter((e) => e.klasse === klasse);
 
   useEffect(() => {
     if (id) {
       const found = codeExamples.find((e) => e.id === id);
-      if (found) setSelectedExample(found);
+      if (found) {
+        setSelectedExample(found);
+        setKlasse(found.klasse);
+      }
     }
   }, [id]);
 
@@ -31,8 +37,14 @@ const Examples = () => {
               Übungsbeispiele zum Lernen 
             </p>
           </div>
+          <KlassenAuswahl value={klasse} onChange={setKlasse} />
+          {sichtbareBeispiele.length === 0 && (
+            <p className="text-center text-muted-foreground">
+              Für die {klasse}. Klasse gibt es noch keine Beispiele – bald mehr! 🚧
+            </p>
+          )}
           <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-            {codeExamples.map((example, index) => (
+            {sichtbareBeispiele.map((example, index) => (
               <Link key={example.id} to={`/examples/${example.id}`} className="no-underline">
                 <ExampleCard
                   icon={example.icon}
