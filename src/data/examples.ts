@@ -997,7 +997,146 @@ double alpha(double x, double y){
     return atan2(y, x);
     
 }`,
+},{
+  id: "Noten",
+  klasse: 2,
+  title: "Notenliste",
+  icon: "🧮",
+  description: "Eine Notenliste welche Noten in einem Array speichert und Noten auch hinzufügen und entfernen kann.",
+  tip: "Auf for Schleifen achten um zu verhindern dass man das ganze Array überschreibt",
+  code: `#include <stdio.h>
+float durchschnitt(int noten[]);
+void gibaus(int noten[]);
+int anzahl(int noten[],int gewunscht);
+int notenstatistik(int noten[]);
+int entfernen(int noten[],int index);
+int fuegeein(int noten[],int index2,int neu);
+ 
+ 
+int n = 4;
+#define MAX 36
+ 
+    int main(){
+        int arr[]={5,3,1,2,3};
+        int anz=0;
+        int index;
+        int index2;
+        int neuenote;
+        float mittel = durchschnitt(arr);
+        printf("Der Durchschnitt = %0.2f\n",mittel);
+        gibaus(arr);
+ 
+        printf("Geben sie die Note ein vonwelcher sie die Anzahl wissen wollen: \n");
+        scanf("%d",&anz);
+        int ausgabe = anzahl(arr,anz);
+        printf("Die Note %d gibt es %d mal\n",anz,ausgabe);
+ 
+        printf("An welcher Stelle wollen sie eine Zahl hinzufügen\n");
+        scanf("%d",&index);
+        entfernen(arr,index);
+        gibaus(arr);
+ 
+        printf("An welcher Stelle wollen sie eine Note eingeben? : ");
+        scanf("%d",&index2);
+        printf("Bitte geben sie ihre neue Note ein: \n");
+        scanf("%d",&neuenote);
+        fuegeein(arr,index2,neuenote);
+        gibaus(arr);
+       
+        return 0;
+    }
+    void gibaus(int noten[]){
+        for(int i=0;i<=n;i++){
+            printf("%d. Stelle = %d\n",i+1, noten[i]);
+        }
+    }
+float durchschnitt(int noten[]){
+    int summe=0;
+    for(int i = 0; i<n; i++){
+        summe = summe + noten[i];
+    }
+    float mitte = (float)summe/n;
+    return mitte;
+}
+int anzahl(int noten[],int gewunscht){
+    int zahl=0;
+    for(int i=0;i<=n;i++){
+        if(noten[i]==gewunscht){
+            zahl++;
+        }
+    }
+    return zahl;
+}
+int entfernen(int noten[],int index){
+    if(index >=0 && index <n){
+        for(int i=index;i<n;i++){
+            noten[i]=noten[i+1];
+        }
+    }
+n--;
+}
+int fuegeein(int noten[],int index2,int neu){
+   
+         if(index2>=0 && index2<=n){
+            for(int i=n ; i>index2 ;i--)
+            {
+                noten[i] = noten[i-1];    
+        }
+        noten[index2] = neu;
+    }
+    n++;
+}
+ 
+`
 },
+{
+{
+  id: "Durchschnitt eines Arrays",
+  klasse: 2,
+  title: "Durchschnitt",
+  icon: "🧮",
+   description: "Wir berechnen den Durchschnitt eines Arrays",
+  tip: "Wir müssen eine Rückgabe von dem Array haben / in der Funktion eine Rückgabe",
+  code: `#include <stdio.h>
 
-  
+
+#define MAX 36
+
+int n= 8;
+void ausgabe(int noten[]);
+float durchschnitt(int noten[]);
+
+
+
+int main(){
+int arr[MAX] = {1,2,4,5,3,2,1,2};
+ausgabe(arr);
+
+
+float mittelwert = durchschnitt(arr);
+printf("\n%.2f",mittelwert);
+
+
+return 0;
+
+}
+
+void ausgabe(int noten[]){
+    for(int i=0;i<n;i++){
+        printf("%d ",noten[i]);
+
+    }
+   
+}
+
+float durchschnitt(int noten[]){
+    float summe=0;
+        for(int i=0;i<n;i++){
+            summe = summe + noten[i];
+        }
+        float mittel = summe / n;
+        return mittel;
+}
+    `
+},
 ];
