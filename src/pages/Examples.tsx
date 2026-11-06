@@ -5,7 +5,7 @@ import { CodeDisplay } from "@/components/CodeDisplay";
 import { KlassenAuswahl, Klasse } from "@/components/KlassenAuswahl";
 import { Input } from "@/components/ui/input";
 import { codeExamples } from "@/data/examples";
-import { Code2, Search } from "lucide-react";
+import { Code2, Search, Cpu } from "lucide-react"; // Cpu Icon für Mikrocontroller hinzugefügt
 
 const Examples = () => {
   const { id } = useParams<{ id?: string }>();
@@ -16,14 +16,19 @@ const Examples = () => {
   // Das ausgewählte Beispiel kommt direkt aus der Adresse (/examples/:id)
   const selectedExample = id ? codeExamples.find((e) => e.id === id) ?? null : null;
 
-  // Die Klasse steht in der Adresse (?klasse=2), so kann man sie auch verlinken
-  const klasse: Klasse = selectedExample
+  // Hier erlauben wir nun auch "mikrocontroller" als Wert für die Ansicht
+  const kategorieParam = searchParams.get("klasse");
+  const klasse: Klasse | "mikrocontroller" = selectedExample
     ? selectedExample.klasse
-    : searchParams.get("klasse") === "2"
+    : kategorieParam === "mikrocontroller"
+    ? "mikrocontroller"
+    : kategorieParam === "2"
     ? 2
     : 1;
 
   const suchbegriff = suche.trim().toLowerCase();
+  
+  // Filtert nach Klasse ODER Mikrocontroller
   const sichtbareBeispiele = codeExamples.filter(
     (e) =>
       e.klasse === klasse &&
@@ -45,13 +50,33 @@ const Examples = () => {
             <p className="text-lg text-muted-foreground">Übungsbeispiele zum Lernen</p>
           </div>
 
-          <KlassenAuswahl
-            value={klasse}
-            onChange={(k) => {
-              setSearchParams({ klasse: String(k) });
-              setSuche("");
-            }}
-          />
+          {/* Auswahl für Klassen und zusätzlich Mikrocontroller */}
+          <div className="flex justify-center gap-3 mb-6">
+            <button
+              onClick={() => { setSearchParams({ klasse: "1" }); setSuche(""); }}
+              className={`px-4 py-2 rounded-md font-medium transition-colors ${
+                klasse === 1 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+              }`}
+            >
+              1. Klasse
+            </button>
+            <button
+              onClick={() => { setSearchParams({ klasse: "2" }); setSuche(""); }}
+              className={`px-4 py-2 rounded-md font-medium transition-colors ${
+                klasse === 2 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+              }`}
+            >
+              2. Klasse
+            </button>
+            <button
+              onClick={() => { setSearchParams({ klasse: "mikrocontroller" }); setSuche(""); }}
+              className={`px-4 py-2 rounded-md font-medium transition-colors flex items-center gap-2 ${
+                klasse === "mikrocontroller" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+              }`}
+            >
+              <Cpu className="w-4 h-4" /> Mikrocontroller
+            </button>
+          </div>
 
           <div className="relative max-w-md mx-auto mb-4">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -64,13 +89,15 @@ const Examples = () => {
           </div>
           <p className="text-center text-sm text-muted-foreground mb-8">
             {sichtbareBeispiele.length} {sichtbareBeispiele.length === 1 ? "Beispiel" : "Beispiele"}{" "}
-            in der {klasse}. Klasse
+            {klasse === "mikrocontroller" ? "im Bereich Mikrocontroller" : `in der ${klasse}. Klasse`}
           </p>
 
           {sichtbareBeispiele.length === 0 && (
             <p className="text-center text-muted-foreground">
               {suchbegriff
                 ? "Nichts gefunden – probier einen anderen Suchbegriff. 🔍"
+                : klasse === "mikrocontroller"
+                ? "Für Mikrocontroller gibt es noch keine Beispiele – bald mehr! 🚧"
                 : `Für die ${klasse}. Klasse gibt es noch keine Beispiele – bald mehr! 🚧`}
             </p>
           )}

@@ -1,8 +1,10 @@
+import { LucideIcon, Cpu, Terminal } from "lucide-react";
+
 export interface CodeExample {
   id: string;
-  klasse: 1 | 2; // 1 = 1. Klasse, 2 = 2. Klasse
+  klasse: 1 | 2 | "mikrocontroller"; // "mikrocontroller" als neue Kategorie hinzugefügt
   title: string;
-  icon: string;
+  icon: string | LucideIcon;
   description: string;
   tip: string;
   code: string;
@@ -1187,4 +1189,58 @@ void gibaus(int noten[MAX]){
 }
     `
 },
+{
+   id: "arduino-blink",
+    klasse: "mikrocontroller",
+    title: "LED Blinken (Arduino)",
+    icon: "🧮",
+    description: "Lässt eine integrierte LED im Sekundentakt ein- und ausschalten.",
+    tip: "delay(1000) wartet genau 1 Sekunde.",
+    code: `#include <Arduino.h>
+#include <LiquidCrystal_I2C.h>
+
+#define LCD_ADDRESS 0x27
+#define LCD_NUM_ROWS 2
+#define LCD_NUM_COLS 16
+
+#define BAUDRATE 115200
+
+LiquidCrystal_I2C lcd(LCD_ADDRESS,LCD_NUM_COLS,LCD_NUM_ROWS);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+void gpio_init(){
+    DDRF = 0xff; // Alle pins sind Ausgänge
+    //Alternative Schreibweisen
+    // DDRF = 0b11111111
+    // DDRF = 255
+
+    PORTF = 0xAA;
+    // Weil 1010 = A ist
+}
+
+void setup() {
+
+Serial.begin(BAUDRATE);
+
+gpio_init();
+
+  lcd.init();
+  lcd.backlight();
+  lcd.print("Hello HWEK!");
+
+Serial.println("---Setup done---");
+
+}
+
+void loop() {
+
+//Serial.println("Hello HWEK!!");
+PORTF = 0x55;
+delay(1000);
+PORTF = 0xAA;
+delay(1000);
+
+}
+
+`
+}
 ];
